@@ -1,0 +1,66 @@
+@import url('https: //fonts.google.com/specimen/Poppins');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-scrollbar {
+    width: .8rem;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 12px;
+    background: hsl(180, 66%, 49%);
+}
+
+.show {
+    display: block;
+    transition: .4s ease-in;
+}
+
+/* Toggle class for Header scroll */
+.scroll {
+    position: fixed;
+    transition: .8s ease-in;
+    background-color: hsl(0, 0%, 75%);
+}
+
+
+
+
+
+@media (max-width:767px) {
+    .card::before {
+        background-color: hsl(180, 66%, 49%);
+        width: 10px;
+        height: 80px;
+        content: '';
+        position: absolute;
+        bottom: -28%;
+
+    }
+}
+
+@media (min-width:768px) {
+    .card-2 {
+        margin-top: 2.5rem;
+    }
+
+    .card-3 {
+        margin-top: 5rem;
+    }
+
+    .card-2::after,
+    .card-3::after {
+        background-color: hsl(180, 66%, 49%);
+        width: 9%;
+        height: 6px;
+        content: '';
+        position: absolute;
+        left: -10%;
+    }
+}
