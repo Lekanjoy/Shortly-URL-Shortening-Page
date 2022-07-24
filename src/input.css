@@ -17,9 +17,11 @@
     background: hsl(180, 66%, 49%);
 }
 
+/* Toggle class for Hamburger Menu */
 .show {
     display: block;
-    transition: .4s ease-in;
+    /* transform: translateY(190px); */
+    /* transition: transform .4s ease-in; */
 }
 
 /* Toggle class for Header scroll */
@@ -27,10 +29,8 @@
     position: fixed;
     transition: .8s ease-in;
     background-color: hsl(0, 0%, 75%);
+    color: hsl(260, 8%, 14%);
 }
-
-
-
 
 
 @media (max-width:767px) {
@@ -47,20 +47,20 @@
 
 @media (min-width:768px) {
     .card-2 {
-        margin-top: 2.5rem;
+    top: 2.5rem;
     }
 
     .card-3 {
-        margin-top: 5rem;
+        top: 5rem;
     }
 
     .card-2::after,
     .card-3::after {
         background-color: hsl(180, 66%, 49%);
-        width: 9%;
+        width: 6%;
         height: 6px;
         content: '';
         position: absolute;
-        left: -10%;
+        left: -6%;
     }
 }
