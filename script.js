@@ -80,7 +80,7 @@ function displayShortLink(links) {
           <input id="short" type="text" value="${
             link.short_link
           }" readonly class=" short w-full outline-none rounded-l-none rounded-lg p-4 text-Cyan md:w-1/2">
-          <button id="copyBtn" onclick="${copyToClipboard()};"  class="absolute px-4 py-2 bg-Cyan rounded-lg text-white  right-3 top-2">Copy</button>
+          <button id="copyBtn" class="absolute px-4 py-2 bg-Cyan rounded-lg text-white  right-3 top-2">Copy</button>
         </div>
 
     
@@ -89,6 +89,7 @@ function displayShortLink(links) {
     .join(" ");
 
   clipboard.innerHTML += htmlString;
+  copyToClipboard();
 
   function copyToClipboard() {
     let copyBtn = document.querySelectorAll(".copyBtn");
