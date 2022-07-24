@@ -54,7 +54,7 @@
 
     <div class="r-flex  hidden md:block">
       <button><a href="">Login</a></button>
-      <button class="text-white py-1 px-4 bg-Cyan rounded-2xl ml-2 lg:hover:bg-Cyan/50"><a href="">Sign Up</a></button>
+      <button  class="text-white py-1 px-4 bg-Cyan rounded-2xl ml-2 lg:hover:bg-Cyan/50"><a href="">Sign Up</a></button>
     </div>
 
   </header>
@@ -64,14 +64,18 @@
 
 
     <!-- Intro Section Here -->
-    <section class="intro px-6  flex flex-col-reverse items-center gap-8 w-full md:py-12  md:flex-row md:pb-36 md:px-16 lg:px-24">
+    <section
+      class="intro px-6  flex flex-col-reverse items-center gap-8 w-full md:py-12  md:flex-row md:pb-36 md:px-16 lg:px-24">
 
       <div class="text pt-20 pb-36 text-center lg:w-2/4 md:text-left md:py-0">
-        <h1 class="text-VeryDarkBlue font-extrabold text-3xl pb-4 md:text-4xl lg:text-6xl">More than just <br class="hidden lg:block"> shorter links
+        <h1 class="text-VeryDarkBlue font-extrabold text-3xl pb-4 md:text-4xl lg:text-6xl">More than just <br
+            class="hidden lg:block"> shorter links
         </h1>
-        <p class="text-GrayishViolet font-medium pb-6 md:text">Build your brand’s recognition and get detailed<br class="hidden lg:block"> insights
+        <p class="text-GrayishViolet font-medium pb-6 md:text">Build your brand’s recognition and get detailed<br
+            class="hidden lg:block"> insights
           on how your links are performing.</p>
-        <button class=" py-2 px-8 bg-Cyan rounded-full text-white font-medium lg:hover:bg-Cyan/50"><a href="">Get Started</a></button>
+        <button class=" py-2 px-8 bg-Cyan rounded-full text-white font-medium lg:hover:bg-Cyan/50"><a href="">Get
+            Started</a></button>
       </div>
 
       <div class="illustration">
@@ -83,20 +87,19 @@
     <!-- Statistics Section Here -->
 
     <section class="stats flex  items-center flex-col bg-stats px-6 pb-20 w-full h-auto relative 
-    pt-40 md:px-16 md:pt-44 lg:px-24 ">
+    pt-32 md:px-16 md:pt-20 lg:px-24 ">
       <!-- Input Section -->
       <div class="shorten absolute w-11/12 top-[-5%] bg-DarkViolet p-8 rounded-lg flex flex-col gap-y-3 bg-mobShorten 
        bg-no-repeat bg-right-top md:gap-x-1 md:flex-row md:top-[-8%] md:bg-deskShorten md:bg-cover">
-        <label id="label" for="shorten" class=" hidden absolute top-1 text-sm text-Red italic md:top-[75%]">Please add a link</label>
-        <input id="shorten" class="p-3 rounded-lg md:w-4/5" type="text" placeholder="Shorten a link here...">
-        <button class="p-3 bg-Cyan text-white rounded-lg md:w-[20%] lg:hover:bg-Cyan/50" type="submit">Shorten It!</button>
-
-        <div class="clipboard flex w-full gap-1">
-          <input id="copyText" type="text" value="www.facebook.com" class="rounded-lg w-3/4 p-3">
-          <button id="copyBtn" class="px-4 py-2 bg-Cyan rounded-lg w-1/4">Copy</button>
-        </div>
-        
+        <label id="label" for="shorten" class=" hidden absolute top-1 text-sm text-Red italic md:top-[75%]">Please add a
+          link</label>
+        <input id="shortenURL" class="p-3 rounded-lg md:w-4/5 outline-none" type="text" placeholder="Shorten a link here...">
+        <button id="shortenBtn" class="p-3 bg-Cyan text-white rounded-lg md:w-[20%] lg:hover:bg-Cyan/50" type="submit">Shorten
+          It!</button>
       </div>
+
+      <!-- Clipboard Section -->
+      <div id="clipboard" class="w-full mb-12"></div>
 
       <div class="details w-full text-center mb-16 md:mb-24">
         <h2 class="text-3xl font-bold text-VeryDarkBlue pb-4">Advanced Statistics</h2>
@@ -162,7 +165,7 @@
       <h3 class="font-bold text-2xl  mb-5 md:text-4xl">Boost your links today</h3>
       <button class="py-3 px-6 bg-Cyan text-white rounded-full lg:hover:bg-Cyan/50">Get Started</button>
     </section>
-    
+
 
   </main>
 
@@ -205,7 +208,7 @@
       <img class="p-1 rounded-full lg:hover:bg-Cyan" src="/images/icon-facebook.svg" alt="icon-facebook">
       <img class="p-1 rounded-full lg:hover:bg-Cyan" src="/images/icon-twitter.svg" alt="icon-twitter">
       <img class="p-1 rounded-full lg:hover:bg-Cyan" src="/images/icon-pinterest.svg" alt="icon-pinterest">
-      <img  class="p-1 rounded-full lg:hover:bg-Cyan" src="/images/icon-instagram.svg" alt="icon-instagram">
+      <img class="p-1 rounded-full lg:hover:bg-Cyan" src="/images/icon-instagram.svg" alt="icon-instagram">
 
 
     </div>
