@@ -32,6 +32,11 @@
     color: hsl(260, 8%, 14%);
 }
 
+.copiedBg{
+    background-color: hsl(260, 8%, 14%);
+}
+
+
 
 @media (max-width:767px) {
     .card::before {

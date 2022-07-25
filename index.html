@@ -30,7 +30,7 @@
     </div>
 
     <div id="menu" class="menu md:hidden">
-      <img src="/images/icon-hamburger.svg" alt="menu">
+      <img id="icon-close" src="/images/icon-hamburger.svg" alt="menu">
     </div>
 
     <!-- Mobile Navigation starts -->
@@ -99,7 +99,7 @@
       </div>
 
       <!-- Clipboard Section -->
-      <div id="clipboard" class="w-full mb-12"></div>
+      <div id="clipboard" class=" clipboard w-full mb-12"></div>
 
       <div class="details w-full text-center mb-16 md:mb-24">
         <h2 class="text-3xl font-bold text-VeryDarkBlue pb-4">Advanced Statistics</h2>
@@ -110,7 +110,7 @@
 
 
       <!-- Cards Section Here -->
-      <div class="cards flex justify-center flex-col gap-y-24 w-full cursor-pointer md:flex-row md:pb-20 md:gap-x-3 lg:gap-x-6">
+      <div class="cards  flex justify-center flex-col gap-y-24 w-full cursor-pointer md:flex-row md:pb-20 md:gap-x-3 lg:gap-x-6">
         <!-- Card 1 -->
         <div class="card flex justify-center flex-wrap text-center bg-white w-full h-72 px-4 pt-20     
           rounded-xl relative md:text-left md:pt-14  md:px-4 md:pb-4 md:h-auto md:flex-1 lg:px-8  lg:py-12">
@@ -190,7 +190,7 @@
       <div class="resource flex flex-col gap-y-3 pb-8">
         <h5 class="text-white text-lg pb-4">Resources</h5>
         <a href="" class="lg:hover:text-Cyan">Blog</a>
-        <a href="">Developers</a>
+        <a href="" class="lg:hover:text-Cyan">Developers</a>
         <a href="" class="lg:hover:text-Cyan">Support</a>
       </div>
 
@@ -204,7 +204,7 @@
 
     </div>
 
-    <div class="socials grid grid-cols-4 gap-x-10 md:gap-x-4 lg:gap-x-10 ">
+    <div class="socials grid grid-cols-4 gap-x-10 md:gap-x-4 lg:gap-x-10 lg:cursor-pointer">
       <img class="p-1 rounded-full lg:hover:bg-Cyan" src="/images/icon-facebook.svg" alt="icon-facebook">
       <img class="p-1 rounded-full lg:hover:bg-Cyan" src="/images/icon-twitter.svg" alt="icon-twitter">
       <img class="p-1 rounded-full lg:hover:bg-Cyan" src="/images/icon-pinterest.svg" alt="icon-pinterest">
@@ -213,9 +213,7 @@
 
     </div>
 
-
   </footer>
-
 
 </body>
 

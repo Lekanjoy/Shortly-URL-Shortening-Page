@@ -1,9 +1,20 @@
 const hamburgerMenu = document.getElementById("menu");
+const menuIcon = document.getElementById('icon-close');
 const navMenu = document.getElementById("nav");
 
+//Hamburger Menu
 hamburgerMenu.addEventListener("click", () => {
   navMenu.classList.toggle("show");
+
+  if (navMenu.classList.contains('show')) {
+    menuIcon.src = '/images/icon-close.svg'
+    menuIcon.style.width = '25px';
+  } else {
+    menuIcon.src = "/images/icon-hamburger.svg";
+  }
+
 });
+
 
 // Scroll Header
 window.addEventListener("scroll", () => {
@@ -15,17 +26,15 @@ window.addEventListener("scroll", () => {
   }
 });
 
-// Shortening Links
+ 
 const shortenURL = document.getElementById("shortenURL");
 const shortenBtn = document.getElementById("shortenBtn");
 const label = document.getElementById("label");
 
-const clipboard = document.querySelector("#clipboard");
-const originalLinkField = document.getElementById("original");
-let dataLinks = [];
-
+//  Creating an onClick event on the Button
 shortenBtn.addEventListener("click", getShortLink);
 
+// Fetching link from API
 async function getShortLink() {
   const userURL = shortenURL.value;
 
@@ -33,7 +42,6 @@ async function getShortLink() {
     console.warn("Field Empty");
     label.style.display = "block";
     shortenURL.style.border = "2px solid hsl(0, 87%, 67%)";
-
     // Removes error message after 5 Seconds
     setTimeout(() => {
       label.style.display = "none";
@@ -44,18 +52,22 @@ async function getShortLink() {
   }
 
   try {
-    const response = await fetch(
-      ` https://api.shrtco.de/v2/shorten?url=${userURL}`
-    );
-    const data = await response.json();
+    // Shows the task is undergoing in the button
+    shortenBtn.textContent = "Shortening . . . ";
+    const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${userURL}`);
+    let data = await response.json();
+    const shortLinkData = data.result.short_link;
+    const originalLinkData = data.result.original_link;
+    // console.log(shortLinkData);
 
-    //Pushing the object into an array so as to use the map method to display
-    dataLinks.push(data.result);
-
-    //Displaying the Generated Links
-    displayShortLink(dataLinks);
+    //Creating the Links as soon as the data is gotten from the API
+    createLinkElement(originalLinkData, shortLinkData);
+    // Returns the button text after link is generated
+    shortenBtn.textContent = "Shorten It!";
     shortenURL.value = "";
   } catch (error) {
+    shortenBtn.textContent = "Shorten It!";
+
     console.error(error);
     label.textContent = "Something went wrong!";
     shortenURL.style.border = "2px solid hsl(0, 87%, 67%)";
@@ -69,39 +81,75 @@ async function getShortLink() {
   }
 }
 
-function displayShortLink(links) {
-  const htmlString = links
-    .map((link) => {
-      return `
-            <div class="link flex w-full gap-y-1 relative pb-6">
-          <input id="original" type="text" value="${
-            link.original_link
-          }" readonly class=" hidden outline-none rounded-lg rounded-r-none w-1/2 p-4 text-DarkViolet md:block">
-          <input id="short" type="text" value="${
-            link.short_link
-          }" readonly class=" short w-full outline-none rounded-l-none rounded-lg p-4 text-Cyan md:w-1/2">
-          <button id="copyBtn" class="absolute px-4 py-2 bg-Cyan rounded-lg text-white  right-3 top-2">Copy</button>
-        </div>
+function createLinkElement(originalLink, shortLink) {
+  let container = document.querySelector(".clipboard");
 
-    
-    `;
-    })
-    .join(" ");
+  // Creating the element
+  let div = document.createElement("div");
+  let originalInput = document.createElement("input");
+  let shortInput = document.createElement("input");
+  let button = document.createElement("button");
 
-  clipboard.innerHTML += htmlString;
+  // Adding Tailwind classes to style the created elements
+  div.className = "link flex w-full gap-y-0.5 relative pb-6";
+  originalInput.className = "hidden outline-none rounded-lg rounded-r-none w-1/2 p-4 text-DarkViolet md:block";
+  shortInput.className = "short w-full outline-none rounded-l-none rounded-lg p-4 text-Cyan md:w-1/2";
+  button.className = "copyBtn absolute px-4 py-2 bg-Cyan rounded-lg text-white  right-3 top-2";
+
+  // Making sure user can only copy the links and not accidentally modify it.
+  originalInput.readOnly = true
+  shortInput.readOnly = true
+
+  // Adding Content to the elements
+  originalInput.value = originalLink;
+  shortInput.value = shortLink;
+  button.textContent = "Copy";
+
+  // Appending the elements to the Page
+  container.appendChild(div);
+  div.append(originalInput);
+  div.append(shortInput);
+  div.append(button);
+
+  // Copy to Clipboard Here
   copyToClipboard();
 
-  function copyToClipboard() {
-    let copyBtn = document.querySelectorAll(".copyBtn");
-    let shortLinkField = document.querySelectorAll(".short");
+  //  Makes sure Generated Links are not more than 3
+  // tidyLinks(container);
+}
 
-    copyBtn.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        shortLinkField.forEach((field) => {
-          field.select();
-          document.execCommand("copy");
-        });
-      });
+// Function to copy shortlink generated.
+function copyToClipboard() {
+  let copyBtn = document.getElementsByClassName("copyBtn");
+
+   // Looping through all the copy buttons to be created.
+  for (let i = 0; i < copyBtn.length; i++) {
+    copyBtn[i].addEventListener("click", (e) => {
+      let url = e.target.parentNode.querySelector(".short").value;
+      let selectText = e.target.parentNode.querySelector(".short");
+      selectText.select();
+      navigator.clipboard.writeText(url);
+      copyBtn[i].textContent = "Copied";
+      copyBtn[i].classList.add("copiedBg");
+
+      // Setting the 'Copy' button back to its original state after 5seconds
+      setTimeout(() => {
+        copyBtn[i].textContent = "Copy";
+        copyBtn[i].classList.remove("copiedBg");
+        selectText.setSelectionRange(0, 0);
+      }, 5000);
+
     });
   }
+}
+
+//  Setting the limit of links generated to 3
+function tidyLinks(param) {
+  let limit = 3;
+
+  // if(container.length > limit){
+  //   container.splice(0, container.length - limit);
+
+  // }
+  // console.log(param.length);
 }
